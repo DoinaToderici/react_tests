@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function GetByLabelText() {
+export default function GetByPlaceholderText() {
   const [value, setValue] = useState("");
 
   const handleOnChange = () => {};
@@ -8,7 +8,7 @@ export default function GetByLabelText() {
   return (
     <div>
       {" "}
-      <h1>getByLabelText</h1>
+      <h1>GetByPlaceholderText</h1>
       <form>
         <label htmlFor="input">Enter text:</label>
         <input
