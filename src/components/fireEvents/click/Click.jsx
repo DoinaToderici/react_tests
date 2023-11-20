@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 
 export default function Click() {
-  const [content, setContent] = useState("Hello");
+  const [value, setValue] = useState("");
+
   return (
     <div>
-      <button onClick={() => setContent(content == "Hello" ? "Bye" : "Hello")}>
-        {content}
-      </button>
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <h2>{value}</h2>
+      <button onClick={() => setValue("")}>Refresh</button>
     </div>
   );
 }
