@@ -19,3 +19,12 @@ test("render heading test when selected optionselected option", () => {
 
   expect(heading).toBeInTheDocument();
 });
+
+// userEvent.hover()
+test("render visible span to hover", () => {
+  render(<UserEvent />);
+  const paragraphe = screen.getByText("Hover over me");
+  const span = screen.getByText("Tooltip text");
+  userEvent.hover(paragraphe);
+  expect(span).toBeVisible();
+});
