@@ -3,16 +3,19 @@ import React, { useState } from "react";
 export default function UserEvent() {
   const [cityName, setCityName] = useState("Mumbai");
   const [visibility, setVisibility] = useState(true);
+
   return (
     <>
-      <select id="selectCity" onChange={(e) => setCityName(e.target.value)}>
-        <option> Mumbai</option>
-        <option> Bangalore</option>
-        <option> Chennai</option>
-      </select>
-      <h2>{cityName}</h2>
+      <div className="selectOptionsTest">
+        <select id="selectCity" onChange={(e) => setCityName(e.target.value)}>
+          <option> Mumbai</option>
+          <option> Bangalore</option>
+          <option> Chennai</option>
+        </select>
+        <h2>{cityName}</h2>
+      </div>
       <hr />
-      <div className="tooltip">
+      <div className="hoverTest">
         <p
           onMouseOver={() => setVisibility(false)}
           onMouseLeave={() => setVisibility(true)}
@@ -22,6 +25,11 @@ export default function UserEvent() {
         <span className="tooltiptext" hidden={visibility}>
           Tooltip text
         </span>
+      </div>
+      <hr />
+      <div className="uploadTest">
+        <label htmlFor="singleFile">Upload File :</label>
+        <input type="file" id="singleFile" data-testid="inputFile" />
       </div>
     </>
   );

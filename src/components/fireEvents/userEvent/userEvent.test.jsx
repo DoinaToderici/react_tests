@@ -10,7 +10,7 @@ test("render selected option", () => {
   expect(select).toHaveValue("Bangalore");
 });
 
-// userEvent.selectOptions()
+// userEvent.selectOptions() and useState()
 test("render heading test when selected optionselected option", () => {
   render(<UserEvent />);
   const select = screen.getByRole("combobox");
@@ -27,4 +27,17 @@ test("render visible span to hover", () => {
   const span = screen.getByText("Tooltip text");
   userEvent.hover(paragraphe);
   expect(span).toBeVisible();
+});
+
+// userEvent.upload()
+test("upload Fille", () => {
+  render(<UserEvent />);
+  const label = screen.getByLabelText("Upload File :");
+  const input = screen.getByTestId("inputFile");
+  const file = new File(["file"], "img.png", {
+    type: "image/png",
+  });
+  userEvent.upload(input, file);
+  screen.logTestingPlaygroundURL();
+  expect(input.files[0]).toEqual(file);
 });
