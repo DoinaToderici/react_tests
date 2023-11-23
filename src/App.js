@@ -6,11 +6,12 @@ import GetByRole from "./components/getByRole/getByRole";
 import Click from "./components/fireEvents/click/Click";
 import Submit from "./components/fireEvents/submit/Submit";
 import UserEvent from "./components/fireEvents/userEvent/userEvent";
+import FormUserEvent from "./components/fireEvents/userEvent/formUserEvent";
 
 function App() {
   return (
     <div className="App">
-      <UserEvent />
+      <FormUserEvent />
     </div>
   );
 }
