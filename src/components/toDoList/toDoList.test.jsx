@@ -56,4 +56,27 @@ describe("ToDoList Tests", () => {
       screen.getByTestId("list", { name: "Add new task in list" })
     ).toBeInTheDocument();
   });
+
+  test("Click to a item from list", () => {
+    render(<ToDoList />);
+
+    const input = screen.getByRole("textbox", {
+      target: { name: "taskInput" },
+    });
+    const btnSubmit = screen.getByRole("button", { name: "Add in list" });
+
+    fireEvent.change(input, { target: { value: "Add new task in list" } });
+    expect(input).toHaveValue("Add new task in list");
+    fireEvent.click(btnSubmit);
+    expect(input).toHaveValue("");
+    expect(
+      screen.getByTestId("textItem", { name: "Add new task in list" })
+    ).toBeVisible();
+    fireEvent.click(
+      screen.getByTestId("textItem", { name: "Add new task in list" })
+    );
+    expect(
+      screen.getByTestId("textItem", { name: "Add new task in list" })
+    ).toHaveClass("line-through");
+  });
 });

@@ -30,6 +30,7 @@ export const ItemList = forwardRef(
                   className={`${
                     item.isChecked && "line-through italic"
                   }  mb-1 cursor-pointer`}
+                  data-testid="textItem"
                 >
                   <b>{item.task} </b>
                 </p>
