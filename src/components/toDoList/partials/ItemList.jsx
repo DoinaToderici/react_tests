@@ -9,7 +9,11 @@ export const ItemList = forwardRef(
       item.task !== "" && (
         <li data-testid="item" className="flex align-center justify-between">
           {modifyItem === item ? (
-            <form className="flex w-100" onSubmit={(e) => onUpdate(e, item)}>
+            <form
+              className="flex w-100"
+              data-testid="formUpdateTask"
+              onSubmit={(e) => onUpdate(e, item)}
+            >
               <input
                 ref={ref}
                 defaultValue={item.task}
@@ -18,7 +22,7 @@ export const ItemList = forwardRef(
                 placeholder="Here is your new task"
                 className="w-100 block mr-3 p-1 rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-xs sm:leading-6"
               />
-              <button type="submit">
+              <button type="submit" title="updateSubmitBtn">
                 <GrUpdate />
               </button>
             </form>

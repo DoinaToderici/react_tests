@@ -41,7 +41,9 @@ export default function List({ list, setList }) {
 
   const handleModify = async (e, item) => {
     await setModifyItem(item);
-    modifyInputRef.current.focus();
+    if (modifyInputRef.current) {
+      modifyInputRef.current.focus();
+    }
   };
 
   return (
