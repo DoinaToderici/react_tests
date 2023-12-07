@@ -17,6 +17,7 @@ export default function ToDoList() {
       },
     ];
     setList(newList);
+    console.log(e.target);
     e.target.reset();
   };
   return (
