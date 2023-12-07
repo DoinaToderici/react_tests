@@ -79,4 +79,28 @@ describe("ToDoList Tests", () => {
       screen.getByTestId("textItem", { name: "Add new task in list" })
     ).toHaveClass("line-through");
   });
+
+  test("Delete item from list", () => {
+    render(<ToDoList />);
+
+    const input = screen.getByRole("textbox", {
+      target: { name: "taskInput" },
+    });
+
+    fireEvent.change(input, { target: { value: "Add new task in list" } });
+    expect(input).toHaveValue("Add new task in list");
+    expect(
+      screen.getByRole("button", {
+        target: { title: "deleteBtn" },
+      })
+    ).toBeInTheDocument();
+
+    fireEvent.click(
+      screen.getByRole("button", {
+        target: { title: "deleteBtn" },
+      })
+    );
+
+    waitForElementToBeRemoved(() => expect(screen.getByRole("listitem")));
+  });
 });
