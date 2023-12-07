@@ -34,4 +34,10 @@ describe("ToDoList Tests", () => {
     expect(inputTask).toBeInTheDocument();
     expect(submitItemBtn).toBeInTheDocument();
   });
+
+  test("Test writing a new task", () => {
+    expect(inputTask).toBeInTheDocument();
+    fireEvent.change(inputTask, { target: { value: "This is a new task" } });
+    expect(inputTask.value).toBe("This is a new task");
+  });
 });
