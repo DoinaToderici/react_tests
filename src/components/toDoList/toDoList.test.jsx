@@ -23,11 +23,11 @@ const setUp = () => {
 
   const form = utils.getByTestId("form");
 
-  return { inputTask, submitItemBtn, form, ...utils };
+  return { inputTask, submitItemBtn, form, utils };
 };
 
 describe("ToDoList Tests", () => {
-  const { inputTask, submitItemBtn, form } = setUp();
+  const { inputTask, submitItemBtn, form, utils } = setUp();
 
   test("Render HTML Elements", () => {
     expect(form).toBeInTheDocument();
@@ -38,11 +38,22 @@ describe("ToDoList Tests", () => {
   test("Test writing a new task", () => {
     fireEvent.change(inputTask, { target: { value: "This is a new task" } });
     expect(inputTask.value).toBe("This is a new task");
+    utils.debug();
   });
 
   test("Submit new task", () => {
     fireEvent.change(inputTask, { target: { value: "new task" } });
     fireEvent.submit(form);
     expect(inputTask.textContent).toBe("");
+  });
+
+  test("Render visible list items", () => {
+    render(<ToDoList />);
+    fireEvent.change(inputTask, { target: { value: "Add new task in list" } });
+    fireEvent.submit(form);
+    expect(screen.getByTestId("list")).toBeInTheDocument();
+    expect(
+      screen.getByTestId("list", { name: "Add new task in list" })
+    ).toBeInTheDocument();
   });
 });
